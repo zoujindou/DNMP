@@ -3,8 +3,13 @@ services:
   nginx:
     image: nginx
     container_name: nginx
+    #    ports:
+    #      - "80:80"
     ports:
-      - "80:80"
+      - mode: host
+        protocol: tcp
+        published: 80
+        target: 80
     volumes:
       - ~/webRoot/:/var/www/html/:ro
       - ./nginx/etc/nginx/vhost:/etc/nginx/vhost:ro
